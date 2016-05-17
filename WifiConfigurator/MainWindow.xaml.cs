@@ -24,7 +24,7 @@ namespace WifiConfigurator
     {
         private void LogText(string text)
         {
-            this.tbLogs.Text = text;
+            Console.WriteLine(text);
         }
 
         public MainWindow()
@@ -122,6 +122,7 @@ namespace WifiConfigurator
 
 
             LogText("Finished");
+            MessageBox.Show("Configuration Finished");
         }
     }
 }
