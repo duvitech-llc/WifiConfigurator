@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,7 +62,6 @@ namespace WifiConfigurator
 
         private void btnConfig_Click(object sender, RoutedEventArgs e)
         {
-            
 
             if (String.IsNullOrEmpty(tbSSID.Text) || String.IsNullOrEmpty(tbPassPhrase.Text))
             {
@@ -71,13 +71,26 @@ namespace WifiConfigurator
             }
 
             LogText("Configuring HUD");
-            LogText("Turning off WIFI");
 
-            var process = createSilentProcess(@".\platform-tools\adb", "shell svc wifi disable");
+            var process = createSilentProcess(@".\platform-tools\adb", "start");
 
             process.Start();
             process.WaitForExit();
 
+            LogText("Turning off WIFI");
+            process = createSilentProcess(@".\platform-tools\adb", "shell svc wifi disable");
+
+            process.Start();
+            process.WaitForExit();
+
+            LogText("Copy Template");
+            File.Copy(@".\platform-tools\template\wpa_supplicant.conf", @".\wpa_supplicant.conf");
+
+            LogText("Adding Configuration");
+            string text = File.ReadAllText(@".\wpa_supplicant.conf");
+            text = text.Replace("{SSID}", tbSSID.Text.Trim());
+            text = text.Replace("{PASSPHRASE}", tbPassPhrase.Text.Trim());
+            File.WriteAllText(@".\wpa_supplicant.conf", text);
 
             LogText("Pushing Configuration");
             process = createSilentProcess(@".\platform-tools\adb", @"push wpa_supplicant.conf /data/misc/wifi/wpa_supplicant.conf");
@@ -85,6 +98,8 @@ namespace WifiConfigurator
             process.Start();
             process.WaitForExit();
 
+            LogText("Delete file");
+            File.Delete(@".\wpa_supplicant.conf");
 
             LogText("Changing ownership of file");
             process = createSilentProcess(@".\platform-tools\adb", @"shell chown system.wifi /data/misc/wifi/wpa_supplicant.conf");
