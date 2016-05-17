@@ -5,18 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WifiConfigurator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        Icon="SettingsWiFi.ico" >
     <Grid>
-        <Button x:Name="btnConfig" Content="Configure HUD" HorizontalAlignment="Left" Margin="394,244,0,0" VerticalAlignment="Top" Width="108" Height="41" Click="btnConfig_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="258*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnConfig" Content="Configure HUD" HorizontalAlignment="Left" Margin="144,244,0,0" VerticalAlignment="Top" Width="108" Height="41" Click="btnConfig_Click" Grid.Column="1"/>
         <Label x:Name="lblTitle" Content="HUD WIFI Settings" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.628" Width="169" FontSize="18" FontWeight="Bold" Height="39"/>
-        <TextBox x:Name="tbLogs" HorizontalAlignment="Left" Height="54" Margin="20,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsEnabled="False"/>
+        <TextBox x:Name="tbLogs" HorizontalAlignment="Left" Height="54" Margin="20,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsEnabled="False" Grid.ColumnSpan="2"/>
         <Label x:Name="lblLogs" Content="Messages" HorizontalAlignment="Left" Height="26" Margin="20,216,0,0" VerticalAlignment="Top" Width="69"/>
-        <TextBox x:Name="tbPassPhrase" HorizontalAlignment="Left" Height="35" Margin="147,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <TextBox x:Name="tbSSID" HorizontalAlignment="Left" Height="35" Margin="147,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" ToolTip="Enter SSID of Network Here"/>
-        <TextBox x:Name="tbType" HorizontalAlignment="Left" Height="35" Margin="147,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300"/>
-        <Label x:Name="lblSSID" Content="SSID:" HorizontalAlignment="Left" Margin="60,53,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" Margin="60,112,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="lblKeyManagement" Content="Type:" HorizontalAlignment="Left" Margin="60,169,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="tbPassPhrase" HorizontalAlignment="Left" Height="35" Margin="147,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbSSID" HorizontalAlignment="Left" Height="35" Margin="147,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" ToolTip="Enter SSID of Network Here" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbType" HorizontalAlignment="Left" Height="35" Margin="147,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblSSID" Content="SSID:" HorizontalAlignment="Left" Margin="60,53,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="39"/>
+        <Label x:Name="lblPassword" Content="Password:" HorizontalAlignment="Left" Margin="60,112,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="66"/>
+        <Label x:Name="lblKeyManagement" Content="Type:" HorizontalAlignment="Left" Margin="60,169,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="40"/>
 
     </Grid>
 </Window>
