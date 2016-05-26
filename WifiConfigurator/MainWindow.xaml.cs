@@ -67,10 +67,7 @@ namespace WifiConfigurator
             this.tbType.TabIndex = 2;
             this.tbType.Text = "WPA-PSK";
             this.tbType.IsEnabled = false;
-
-            this.tbSSID.Text = "vigeltek";
-            this.tbPassPhrase.Text = "v1geltek";
-
+            
             this.tbSSID.Focus();
 
             this.btnConnect.Content = "Open";
@@ -372,7 +369,6 @@ namespace WifiConfigurator
         {
             if (!String.IsNullOrEmpty(e.Data))
             {
-                LogText("REC: " + e.Data);
                 int promptIndex = e.Data.IndexOf('#');
                 if(promptIndex < 0)
                 {
@@ -389,7 +385,8 @@ namespace WifiConfigurator
                 else
                 {
                     response = e.Data.Substring(promptIndex + 1).Trim();
-                    LogText("Response: " + response);
+                    if(!String.IsNullOrEmpty(response))
+                        LogText("Response: " + response);
                 }
             }
 
