@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B67CD66B37393F81DF791100C5A12FF805C621DC</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>C27560EE7C8B4DEBDB3ACE5BEBF59E406BB71490</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>WifiConfigurator_TemporaryKey.pfx</ManifestKeyFile>
@@ -113,6 +113,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WifiConfigurator_TemporaryKey.pfx" />
     <Resource Include="SettingsWiFi.ico" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,7 +148,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="WifiConfigurator_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
